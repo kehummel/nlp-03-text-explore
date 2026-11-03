@@ -13,7 +13,7 @@
 
 ## Project Overview
 
-Author: Denise Case
+Author: Denise Case, Kim Hummel
 
 Date: 2026 October
 
@@ -125,7 +125,7 @@ uv run python -m pytest
 
 ## Project Documentation
 
-The [hosted documentation site](https://denisecase.github.io/nlp-03-text-exploration/)
+The [hosted documentation site](https://kehummel.github.io/nlp-03-text-explore/)
 is published using Zensical and GitHub Pages.
 
 The documentation site is used to present the project report,
@@ -139,8 +139,8 @@ to check project files and publish the docs.
 
 GitHub Actions include:
 
-- [CI: Python and Documentation Checks](https://github.com/denisecase/nlp-03-text-exploration/actions/workflows/ci-python-zensical.yml)
-- [CD: Documentation Deployment](https://github.com/denisecase/nlp-03-text-exploration/actions/workflows/deploy-zensical.yml)
+- [CI: Python and Documentation Checks](https://github.com/kehummel/nlp-03-text-explore/actions/workflows/ci-python-zensical.yml)
+- [CD: Documentation Deployment](https://github.com/kehummel/nlp-03-text-explore/actions/workflows/deploy-zensical.yml)
 
 ## Developer Reference
 
@@ -206,11 +206,6 @@ git commit -m "describe your changes in quotes"
 git push -u origin main
 ```
 
-## Developer Notes
-
-- Use the **UP ARROW** and **DOWN ARROW** in the terminal to scroll through past commands.
-- Use `CTRL+f` to find (and replace) text within a file.
-
 ## Developer Tools
 
 This project uses professional Python tools to support development,
@@ -225,7 +220,7 @@ testing, documentation, and code quality.
 
 ## Links
 
-- [Hosted Documentation](https://denisecase.github.io/nlp-03-text-exploration/)
+- [Hosted Documentation](https://kehummel.github.io/nlp-03-text-explore/)
 - [Professional Python Workflow Guide](https://denisecase.github.io/pro-analytics-02/)
 - [Citation](CITATION.cff)
 - [License](LICENSE)
