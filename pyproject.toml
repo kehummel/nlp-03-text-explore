@@ -47,6 +47,7 @@ dependencies = [
 
 dev = [
     # REQ.DEV.DEPS: Standard tools for Python development and validation.
+    "prek", # THIS MAKES THE ORIGINAL COMMANDS uv run prek WORK
     "pytest",     # WHY: Run automated tests.
     "pytest-cov", # WHY: Measure and report test coverage.
     "ruff",       # WHY: Lint and format Python code.

@@ -15,7 +15,7 @@
 
 Author: Denise Case, Kim Hummel
 
-Date: 2026 October
+Date: 2026 November
 
 Third project in the Web Mining and Applied NLP course.
 
