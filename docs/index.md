@@ -77,10 +77,11 @@ word embeddings, and modern language models.
 - **Home** - this landing page
 - [**Project Instructions**](project-instructions.md)
 - [**Glossary**](glossary.md)
+- [**Phases 4 & 5 README**](phase4_5README.md)
 
 ## Project Links
 
-- [GitHub Repository](https://github.com/denisecase/nlp-03-text-exploration)
+- [GitHub Repository](https://github.com/kehummel/nlp-03-text-exploration)
 - [Example Script](https://github.com/denisecase/nlp-03-text-exploration/blob/main/src/nlp/nlp_corpus_explore.py)
 
 ## Project Resources

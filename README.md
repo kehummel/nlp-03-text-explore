@@ -220,6 +220,7 @@ testing, documentation, and code quality.
 
 ## Links
 
+- [Phase 4 & 5 README File](/docs/phase4_5README.md)
 - [Hosted Documentation](https://kehummel.github.io/nlp-03-text-explore/)
 - [Professional Python Workflow Guide](https://denisecase.github.io/pro-analytics-02/)
 - [Citation](CITATION.cff)
