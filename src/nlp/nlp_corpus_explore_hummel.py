@@ -23,7 +23,7 @@ Notes:
 
 Run from root project folder with:
 
-  uv run python -m nlp.nlp_corpus_explore_hummel
+ uv run python -m nlp.nlp_corpus_explore_hummel
 """
 
 # ============================================================

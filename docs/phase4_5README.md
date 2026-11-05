@@ -48,3 +48,13 @@ Phase 4 Co-Occurrences
 ![Phase 4 Co-Occurrences](/docs/images/p4_context.png)
 
 ## Phase 5: Custom Application
+
+### Choosing Data
+
+I knew for my custom application that I wanted to change the dataset completely, so that was what I figured out first. I looked through dataset of social media posts and found one consisting of twitter (currently called X) posts about the Pfizer covid vaccine. I chose this dataset because I could easily put it into categories based on the user location. I chose 4 locations varied throughout the world; England, India, Canada, and South Africa. I then picked 6 tweets from each country. I tried to vary them from different locations in the spreadsheet and ones that didn't have too many special characters in it. This was not a very scientific process but since I don't know how to upload it as a file it was too much to try to do more than that.
+
+Original Data Source: https://www.kaggle.com/datasets/gpreda/pfizer-vaccine-tweets
+
+### Cleaning the Text
+
+When considering how to clean the text I made sure # and @ were in the special characters to be removed.
