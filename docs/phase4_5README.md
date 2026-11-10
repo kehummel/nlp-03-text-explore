@@ -95,8 +95,18 @@ Lastly, I created graphs of the top 5 tokens for each category instead of just f
 
 Also worth looking at to analyze is the context, or words around the top 3 tokens, and the top bigrams.
 
+Context for the top 4 tokens
+
 ![context correct](/docs/images/context_twitter.png)
+
+Top Bigrams:
 
 ![top bigrams](/docs/images/top_bigrams.png)
 
-hen what does it mean - screen shots of results and answer questions from the top of the doucment about the purpose of this project.
+### Analysis
+
+Canada, England, and India all had "vaccine" as a top 5 token. All four categories had "pfizer" in some iteration in the top 5. South Africa seemed more people based as it had "helps" and "people" in it's top 5, but it is worth noting that 2 was the frequency for all five of the top five words, which is not a high frequency. Canada and India had more of what I'd call "factual" top tokens, using science terms like covid19, pfizerbiotech, vaccination, and pfizer/biontech. England's top tokens were focused on time; today, now, and minute.
+
+For the context for the top tokens, "vaccine" and "pfizerbiontech" had more technical words while "pfizer" had words dealing with getting the vaccines (second, jab, first, shipment) and "covid19" had more to deal with the effectiveness or measurement of the vaccine or possibly the virus itself with words like; potentially, against, likely, mild, new, and deaths.
+
+Bigrams help us understand the context in which the words are used. For this dataset, bigrams do not provide as much context for us as only the top three bigrams happen more than once, and everything else only happens once. However, when coupled with the top tokens graph, it does provide a little more context. For example, the token pfizerbiontech occurs 3 times and based on the bigram table, for two out of those three times it is the "pfizerbiontech vaccine". This can lead us to understand that pfizerbiontech is a type of vaccine.

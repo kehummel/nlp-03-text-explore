@@ -336,7 +336,7 @@ for doc in corpus:
                 co_occurrence_dict[token].append(ctx)
 
 # Show results
-for target in ["vaccine", "pfizer", "covid19", "pfizerbiotech"]:
+for target in ["vaccine", "pfizer", "covid19", "pfizerbiontech"]:
     print(f"\nContext for '{target}':")
     print(co_occurrence_dict[target][:10])
 
