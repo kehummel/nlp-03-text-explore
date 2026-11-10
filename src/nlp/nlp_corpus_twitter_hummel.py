@@ -1,7 +1,9 @@
-"""nlp_corpus_explore.py - Module 3 Script.
+"""nlp_corpus_twitter_hummel.py - Module 3 Script.
 
-Author: Denise Case
+Author: Kim Hummel
 Date: 2026 November
+
+This project used Denise Case's npl_corpus_explore.py as a template.
 
 Purpose
 
@@ -22,7 +24,7 @@ Notes:
 
 Run from root project folder with:
 
-  uv run python -m nlp.nlp_corpus_explore
+  uv run python -m nlp.nlp_corpus_twitter_hummel
 """
 
 # ============================================================
@@ -177,6 +179,38 @@ print(f"Corpus contains {len(corpus)} documents.")
 
 # Tokenization splits text into word-like units.
 
+# Stop words are very common words that often add little meaning
+# for simple frequency analysis.
+STOP_WORDS: set[str] = {
+    "a",
+    "an",
+    "and",
+    "are",
+    "as",
+    "at",
+    "be",
+    "but",
+    "by",
+    "for",
+    "from",
+    "has",
+    "have",
+    "in",
+    "is",
+    "it",
+    "its",
+    "of",
+    "on",
+    "or",
+    "that",
+    "the",
+    "to",
+    "was",
+    "were",
+    "will",
+    "with",
+}
+
 
 # Define a function to tokenize text by lowercasing, splitting on whitespace,
 # and stripping common punctuation. We also filter out very short tokens (length <= 2).
@@ -184,8 +218,8 @@ print(f"Corpus contains {len(corpus)} documents.")
 # Use the string strip() method to remove punctuation from the beginning and end of each token.
 def tokenize(text: str) -> list[str]:
     """Tokenize the input text into a list of cleaned tokens."""
-    tokens = text.lower().split()
-    return [t.strip(".,:;!?()[]\"'@#") for t in tokens if len(t) > 2]
+    tokens = [t.strip(".,:;!?()[]\"'@#-") for t in text.lower().split()]
+    return [t for t in tokens if len(t) > 2 and t not in STOP_WORDS]
 
 
 # Define a new empty list to hold the token records we will create.
@@ -209,7 +243,6 @@ token_df: pl.DataFrame = pl.DataFrame(records_list)
 # Show results
 print("Tokenization complete.")
 print(token_df.head(10))
-
 
 # ============================================================
 # Section 4. Compute Global Token Frequencies
@@ -246,7 +279,7 @@ category_freq_df: pl.DataFrame = (
 
 # Show results
 print("Top tokens by category:")
-print(category_freq_df.head(12))
+print(category_freq_df.head(3))
 
 
 # ============================================================
@@ -285,7 +318,7 @@ for category in token_df["category"].unique().to_list():
 # The target token itself is not included in its context list.
 WINDOW_SIZE: int = 2
 
-# Define a new empty dictionary to store the co-occurrence information.
+#  Define a new empty dictionary to store the co-occurrence information.
 # The keys will be target tokens,
 # and the values will be lists of context tokens that appear near the target token.
 co_occurrence_dict: dict[str, list[str]] = defaultdict(list)
@@ -303,10 +336,9 @@ for doc in corpus:
                 co_occurrence_dict[token].append(ctx)
 
 # Show results
-for target in ["dog", "cat", "car", "truck"]:
+for target in ["vaccine", "pfizer", "covid19", "pfizerbiotech"]:
     print(f"\nContext for '{target}':")
     print(co_occurrence_dict[target][:10])
-
 
 # ============================================================
 # Section 8. Create Bigrams (Local Word Pairs) and Compute Frequencies
@@ -353,14 +385,14 @@ print(bigram_freq_df.head(10))
 print("IMPORTANT: Close chart window to continue execution.")
 
 # Define a new DataFrame that filters the category frequency DataFrame
-# to get the top 5 tokens for the "dog" category.
-dog_df = category_freq_df.filter(pl.col("category") == "dog").head(5)
+# to get the top 5 tokens for the "Canada" category.
+canada_df = category_freq_df.filter(pl.col("category") == "Canada").head(5)
 
 # Create a figure that is 8 inches wide and 4 inches tall
 plt.figure(figsize=(8, 4))
 
 # Add a bar chart to the figure using the tokens as the x-axis and their frequencies as the y-axis.
-plt.bar(dog_df["token"], dog_df["len"])
+plt.bar(canada_df["token"], canada_df["len"])
 
 # Define the x-axis tick parameters to rotate the labels by 45 degrees for better readability.
 # The gca() function gets the current axes of the plot, and tick_params() is used to set the rotation of the x-axis labels.
@@ -368,7 +400,7 @@ ax = plt.gca()
 ax.tick_params(axis="x", labelrotation=45)
 
 # Set the title and labels for the axes of the plot.
-plt.title("Case Example: Top Tokens (Dog Category)\n(Close this window to continue)")
+plt.title("Case Example: Top Tokens (Canada Category)\n(Close this window to continue)")
 plt.xlabel("Token")
 plt.ylabel("Frequency")
 
@@ -379,14 +411,94 @@ plt.tight_layout()
 # The execution of the script will pause until the plot window is closed.
 plt.show()
 
+# to get the top 5 tokens for the "England" category.
+england_df = category_freq_df.filter(pl.col("category") == "England").head(5)
 
+# Create a figure that is 8 inches wide and 4 inches tall
+plt.figure(figsize=(8, 4))
+
+# Add a bar chart to the figure using the tokens as the x-axis and their frequencies as the y-axis.
+plt.bar(england_df["token"], england_df["len"])
+
+# Define the x-axis tick parameters to rotate the labels by 45 degrees for better readability.
+# The gca() function gets the current axes of the plot, and tick_params() is used to set the rotation of the x-axis labels.
+ax = plt.gca()
+ax.tick_params(axis="x", labelrotation=45)
+
+# Set the title and labels for the axes of the plot.
+plt.title(
+    "Case Example: Top Tokens (England Category)\n(Close this window to continue)"
+)
+plt.xlabel("Token")
+plt.ylabel("Frequency")
+
+# Adjust the layout of the plot to prevent overlap and ensure everything fits well.
+plt.tight_layout()
+
+# Display the plot on the screen.
+# The execution of the script will pause until the plot window is closed.
+plt.show()
+
+# to get the top 5 tokens for the "India" category.
+india_df = category_freq_df.filter(pl.col("category") == "India").head(5)
+
+# Create a figure that is 8 inches wide and 4 inches tall
+plt.figure(figsize=(8, 4))
+
+# Add a bar chart to the figure using the tokens as the x-axis and their frequencies as the y-axis.
+plt.bar(india_df["token"], india_df["len"])
+
+# Define the x-axis tick parameters to rotate the labels by 45 degrees for better readability.
+# The gca() function gets the current axes of the plot, and tick_params() is used to set the rotation of the x-axis labels.
+ax = plt.gca()
+ax.tick_params(axis="x", labelrotation=45)
+
+# Set the title and labels for the axes of the plot.
+plt.title("Case Example: Top Tokens (India Category)\n(Close this window to continue)")
+plt.xlabel("Token")
+plt.ylabel("Frequency")
+
+# Adjust the layout of the plot to prevent overlap and ensure everything fits well.
+plt.tight_layout()
+
+# Display the plot on the screen.
+# The execution of the script will pause until the plot window is closed.
+plt.show()
+
+# to get the top 5 tokens for the "South Africa" category.
+southafrica_df = category_freq_df.filter(pl.col("category") == "South Africa").head(5)
+
+# Create a figure that is 8 inches wide and 4 inches tall
+plt.figure(figsize=(8, 4))
+
+# Add a bar chart to the figure using the tokens as the x-axis and their frequencies as the y-axis.
+plt.bar(southafrica_df["token"], southafrica_df["len"])
+
+# Define the x-axis tick parameters to rotate the labels by 45 degrees for better readability.
+# The gca() function gets the current axes of the plot, and tick_params() is used to set the rotation of the x-axis labels.
+ax = plt.gca()
+ax.tick_params(axis="x", labelrotation=45)
+
+# Set the title and labels for the axes of the plot.
+plt.title(
+    "Case Example: Top Tokens (South Africa Category)\n(Close this window to continue)"
+)
+plt.xlabel("Token")
+plt.ylabel("Frequency")
+
+# Adjust the layout of the plot to prevent overlap and ensure everything fits well.
+plt.tight_layout()
+
+# Display the plot on the screen.
+# The execution of the script will pause until the plot window is closed.
+plt.show()
 # ============================================================
 # Section 10. Interpret Results and Identify Patterns
 # ============================================================
 
 print("\nCASE GENERAL OBSERVATIONS:")
 
-print("- Tokens cluster by category (dog, cat, car, truck).")
+print("- Tokens cluster by category (Canada, England, India, South Africa).")
 print("- Words that appear in similar contexts behave similarly.")
 print("- Co-occurrence reveals contextual relationships between words.")
 print("- Bigrams capture local structure beyond single tokens.")
